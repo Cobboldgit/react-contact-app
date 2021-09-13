@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Contact from './component/Contact';
+import ContactForms from './component/ContactForms';
 
 function App() {
+  //users state array
+  const [users, setUsers] = useState([]);
+
+  //function to add new user
+  function addUser(user) {
+    setUsers([...users, user])
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app-bg'>
+      <div id="para">React Contact App</div>
+      <ContactForms inputDetail={addUser}/>
+      <Contact details={users}/>
     </div>
   );
 }
