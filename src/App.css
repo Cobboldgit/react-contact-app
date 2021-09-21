@@ -20,11 +20,11 @@ body {
     animation: text 10s ease-in-out  infinite ;
 }
 
-@keyframes text {
+/* @keyframes text {
     0% {color: rgb(255, 136, 0); letter-spacing: normal;}
     50% {color: #fff; letter-spacing: 3px;}
     100% {color: rgb(255, 136, 0); letter-spacing: normal;}
-}
+} */
 
 .app-bg {
     background: #000;
@@ -85,7 +85,7 @@ body {
     padding-left: 20px;
     outline: none;
     color: #fff;
-    transition: 0.5s ease;
+    transition: 0.5s ease-out;
 }
 
 .formBox form input::placeholder {
@@ -99,7 +99,7 @@ body {
 
 .formBox form button {
     cursor: pointer;
-    width: 475px;
+    width: 455px;
     height: 40px;
     border-radius: 5px;
     border: 1px solid grey;
@@ -131,7 +131,34 @@ body {
     /* font-weight: 500; */
     padding: 5px;
     color: #fff;
-    height: 110px;
+    height: 150px;
     margin-bottom: 20px;
 }
 
+
+.btn {
+    height: 40px;
+    border-radius: 5px;
+    width: 49%;
+    letter-spacing: 3px;
+}
+
+.btn:hover {
+    background-color: #fff;
+}
+
+.edit-btn {
+   float: right;
+}
+
+.modal {
+    background: rgba(255, 136, 0, 0.24);
+}
+
+.modal-body {
+    background: #000;
+}
+
+.close-btn {
+    width: 100%;
+}

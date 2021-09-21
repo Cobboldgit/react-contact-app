@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { v4 as uuid } from "uuid";
 import "../App.css";
 
 function ContactForms(props) {
@@ -7,50 +8,47 @@ function ContactForms(props) {
   const [location, setLocation] = useState("");
   const [text, setText] = useState("");
 
-
   function handleAppContact(e) {
     e.preventDefault();
 
-    let user = {
-      name: name,
-      phoneNumber: phoneNumber,
-      location: location,
-    };
+    if (name && phoneNumber && location) {
+      let contact = {
+        name: name,
+        phoneNumber: phoneNumber,
+        location: location,
+        id: uuid(),
+      };
 
+      props.inputDetail(contact);
 
-    props.inputDetail(user);
+      setName("");
+      setPhoneNumber("");
+      setLocation("");
 
-    setName("");
-    setPhoneNumber("");
-    setLocation("");
+      let i = 0;
+      let txt = "You are welcome, your details are safe with us.";
+      let speed = 100;
 
-  }
+      let typeWriter = (props) => {
+        if (i < txt.length) {
+          //   document.getElementById("test").innerHTML += txt.charAt(i);
+          //   i++;
+          //   setTimeout(typeWriter, speed);
 
-function handleTypeWriter() {
-    
-  let i = 0;
-  let txt = "You are welcome, your details are safe with us.";
-  let speed = 100;
+          setText(txt.substring(0, i++));
+          setTimeout(typeWriter, speed);
+        }
+      };
 
-  let typeWriter = (props) => {
-    if (i < txt.length) {
-    //   document.getElementById("test").innerHTML += txt.charAt(i);
-    //   i++;
-    //   setTimeout(typeWriter, speed);
-
-      setText(txt.substring(0, i++));
-      setTimeout(typeWriter, speed);
+      typeWriter();
+    }else {
+      alert('Enter something')
     }
   }
 
-  typeWriter();
-}
- 
-  
 
   return (
     <div className="formBox">
-     
       <form onSubmit={(e) => handleAppContact(e)}>
         <div className="detail-input">
           <input
@@ -75,7 +73,7 @@ function handleTypeWriter() {
             onChange={(e) => setLocation(e.target.value)}
           />
         </div>
-        <button onClick={()=>handleTypeWriter()}>Submit</button>
+        <button>Submit</button>
 
         <div id="test">{text}</div>
       </form>

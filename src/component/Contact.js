@@ -1,27 +1,22 @@
-import React, { useState } from 'react'
-import '../App.css'
-
+import React from "react";
+import ContactList from "./ContactList";
+import "../App.css";
 
 function Contact(props) {
-    const users = props.details
+  const contacts = props.details;
 
-
-
-    return(
-        users.map((user, index) => {
-            return(
-                
-                    <div className='list-box'>
-                            <div key={index}>
-                                <p>Name: {user.name}</p>
-                                <p>PhoneNumber: {user.phoneNumber}</p>
-                                <p>Location: {user.location}</p>
-                            </div>
-                    </div>
-               
-            )
-        })
-    )
+  return contacts.map((contact, index) => {
+    return (
+        <div key={index} className="list-box">
+          <ContactList
+            contact={contact}
+            key={contact.id}
+            deleteContact={props.deleteContact}
+            editContact={props.editContact}
+          />
+        </div>
+    );
+  });
 }
 
 export default Contact;
