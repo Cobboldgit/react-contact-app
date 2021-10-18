@@ -1,8 +1,10 @@
 import ContactList from "./ContactList";
 import "../App.css";
+import { connect } from "react-redux";
+
 
 function Contact(props) {
-  const contacts = props.details;
+  const contacts = props.addContact;
 
   return contacts.map((contact, index) => {
     return (
@@ -18,4 +20,10 @@ function Contact(props) {
   });
 }
 
-export default Contact;
+const mapStateToProps = (state) => {
+  return {
+    addContact: state.contacts
+  }
+}
+
+export default connect(mapStateToProps) (Contact);
