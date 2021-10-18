@@ -8,9 +8,9 @@ function App() {
   const [contacts, setContacts] = useState([]);
 
   //function to add new contact
-  function addContact(contact) {
-    setContacts([...contacts, contact]);
-  }
+  // function addContact(contact) {
+  //   setContacts([...contacts, contact]);
+  // }
 
   //function to delete contact
   const handleDeleteContact = (contactId) => {
@@ -38,9 +38,8 @@ function App() {
   return (
     <div className="app-bg">
       <div id="para">React Contact App</div>
-      <ContactForms inputDetail={addContact} />
+      <ContactForms/>
       <Contact
-        details={contacts}
         deleteContact={handleDeleteContact}
         editContact={handleEditContact}
       />
