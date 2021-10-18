@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 import "../App.css";
+import {connect} from "react-redux"
+import {addContact} from "../action/userAction"
 
 function ContactForms(props) {
   const [name, setName] = useState("");
@@ -19,7 +21,7 @@ function ContactForms(props) {
         id: uuid(),
       };
 
-      props.inputDetail(contact);
+      props.addNewContact(contact);
 
       setName("");
       setPhoneNumber("");
@@ -81,4 +83,8 @@ function ContactForms(props) {
   );
 }
 
-export default ContactForms;
+const mapDispatchToProps = {
+    addNewContact: addContact
+}
+
+export default connect(null, mapDispatchToProps)(ContactForms);
