@@ -42,11 +42,11 @@ function ContactList(props) {
       </Button>
 
       {/* modal to eidt contact */}
-      <Modal className='modal' show={showModal} onHide={() => toggleModal()}>
+      <Modal className="modal" show={showModal} onHide={() => toggleModal()}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Contact</Modal.Title>
         </Modal.Header>
-        <Modal.Body className='modal-body'>
+        <Modal.Body className="modal-body">
           <EditContactsForm
             contact={contact}
             editContact={props.editContact}
@@ -54,7 +54,11 @@ function ContactList(props) {
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button className="close-btn" variant="secondary" onClick={() => toggleModal()}>
+          <Button
+            className="close-btn"
+            variant="secondary"
+            onClick={() => toggleModal()}
+          >
             Close
           </Button>
         </Modal.Footer>
@@ -62,5 +66,9 @@ function ContactList(props) {
     </div>
   );
 }
+
+
+  
+
 
 export default ContactList;
