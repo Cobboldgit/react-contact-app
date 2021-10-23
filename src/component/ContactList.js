@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import EditContactsForm from "./EditContactsForm";
 import "../App.css";
+import { connect } from "react-redux";
+import {deleteContact} from "../action/userAction"
 
 function ContactList(props) {
   const contact = props.contact;
@@ -68,7 +70,10 @@ function ContactList(props) {
 }
 
 
-  
+
+const mapDispatchToProps = {
+  deleteContact
+}
 
 
-export default ContactList;
+export default connect(null, mapDispatchToProps) (ContactList);
