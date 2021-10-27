@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {Button} from 'react-bootstrap'
+import { connect } from "react-redux";
+import { editContact } from "../action/userAction";
 import "../App.css";
 
 function ContactForms(props) {
@@ -56,4 +58,8 @@ function ContactForms(props) {
   );
 }
 
-export default ContactForms;
+const mapDispatchToProps = {
+  editContact
+}
+
+export default connect(null, mapDispatchToProps) (ContactForms);
