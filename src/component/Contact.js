@@ -12,8 +12,6 @@ function Contact(props) {
           <ContactList
             contact={contact}
             key={contact.id}
-            deleteContact={props.deleteContact}
-            editContact={props.editContact}
           />
         </div>
     );
