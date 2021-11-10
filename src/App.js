@@ -25,7 +25,7 @@ function App() {
 }
 
 const mapDispatchToProps = {
-  getAllContacts,
+  getAllContacts
 };
 
 export default connect(null, mapDispatchToProps)(App);

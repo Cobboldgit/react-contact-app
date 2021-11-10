@@ -7,6 +7,7 @@ export const addContact = (contact) => {
         () => {},
         () => {}
       );
+      console.log(contact);
   };
   // return {
   //   type: "ADD_CONTACT",
@@ -31,17 +32,22 @@ export const editContact = (newContact, contactId) => {
   };
 };
 
+
 export const getAllContacts = () => {
   return (dispatch, state, { getFirestore }) => {
     getFirestore()
       .collection("contacts")
       .onSnapshot((querySnapshot) => {
-        let contacts = [];
-        querySnapshot.forEach((doc) => contacts.push(doc.data()));
+      let contact = [];
+        querySnapshot.forEach((doc) => contact.push(doc.data()));
+        console.log(contact);
         dispatch({
           type: "GET_ALL_CONTACTS",
-          payload: contacts,
+          payload: contact,
         });
+      },
+      (e) => {
+        console.log("hggfhtg");
       });
   };
 };
