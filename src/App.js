@@ -5,12 +5,12 @@ import ContactForms from "./component/ContactForms";
 import { connect } from "react-redux";
 import { getAllContacts } from "./action/userAction";
 
-function App() {
+function App(props) {
   //users state array
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
-    getAllContacts();
+    props.getAllContacts();
   }, []);
 
 

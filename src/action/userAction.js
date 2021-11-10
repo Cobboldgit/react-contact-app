@@ -7,7 +7,6 @@ export const addContact = (contact) => {
         () => {},
         () => {}
       );
-      console.log(contact);
   };
   // return {
   //   type: "ADD_CONTACT",
@@ -40,14 +39,13 @@ export const getAllContacts = () => {
       .onSnapshot((querySnapshot) => {
       let contact = [];
         querySnapshot.forEach((doc) => contact.push(doc.data()));
-        console.log(contact);
         dispatch({
           type: "GET_ALL_CONTACTS",
           payload: contact,
         });
       },
       (e) => {
-        console.log("hggfhtg");
+        console.log(e);
       });
   };
 };
