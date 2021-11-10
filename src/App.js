@@ -1,50 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Contact from "./component/Contact";
 import ContactForms from "./component/ContactForms";
+import { connect } from "react-redux";
+import { getAllContacts } from "./action/userAction";
 
-function App() {
+function App(props) {
   //users state array
   const [contacts, setContacts] = useState([]);
 
-  //function to add new contact
-  // function addContact(contact) {
-  //   setContacts([...contacts, contact]);
-  // }
+  useEffect(() => {
+    props.getAllContacts();
+  }, []);
 
-  //function to delete contact
-  const handleDeleteContact = (contactId) => {
-    const filterContact = contacts.filter((contact) => {
-      return contactId !== contact.id;
-    });
 
-    setContacts(filterContact);
-  };
-
-  //function to edit saved contact
-  const handleEditContact = (newContact, contactId) => {
-    // change state and map through contact
-    setContacts(
-      contacts.map((contact) => {
-        if (contactId === contact.id) {
-          return newContact;
-        } else {
-          return contact;
-        }
-      })
-    );
-  };
 
   return (
     <div className="app-bg">
       <div id="para">React Contact App</div>
-      <ContactForms/>
-      <Contact
-        deleteContact={handleDeleteContact}
-        editContact={handleEditContact}
-      />
+      <ContactForms />
+      <Contact />
     </div>
   );
 }
 
-export default App;
+const mapDispatchToProps = {
+  getAllContacts
+};
+
+export default connect(null, mapDispatchToProps)(App);

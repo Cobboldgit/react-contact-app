@@ -22,6 +22,8 @@ const contactReducer = (state = initialState, action) => {
         return contact;
       });
       return { ...state, contacts: updateContact };
+      case "GET_ALL_CONTACTS":
+        return {contacts: action.payload}
     default:
       return state;
   }
