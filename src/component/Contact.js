@@ -20,7 +20,7 @@ function Contact(props) {
 
 const mapStateToProps = (state) => {
   return {
-    addContact: state.contacts
+    addContact: state.contactReducer.contacts
   }
 }
 
