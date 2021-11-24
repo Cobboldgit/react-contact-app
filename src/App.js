@@ -1,31 +1,9 @@
-import { useState, useEffect } from "react";
 import "./App.css";
-import Contact from "./component/Contact";
-import ContactForms from "./component/ContactForms";
+import Router from './Router'
 import { connect } from "react-redux";
-import { getAllContacts } from "./action/userAction";
 
-function App(props) {
-  //users state array
-  const [contacts, setContacts] = useState([]);
-
-  useEffect(() => {
-    props.getAllContacts();
-  }, []);
-
-
-
-  return (
-    <div className="app-bg">
-      <div id="para">React Contact App</div>
-      <ContactForms />
-      <Contact />
-    </div>
-  );
+function App() {
+  return <Router/>
 }
 
-const mapDispatchToProps = {
-  getAllContacts
-};
-
-export default connect(null, mapDispatchToProps)(App);
+export default App;
